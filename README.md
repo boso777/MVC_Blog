@@ -57,17 +57,6 @@ Write, edit, and delete actions are protected by Laravel's built-in `auth` middl
 | Edit an article | ✅ Auth required |
 | Delete an article | ✅ Auth required |
 
-The middleware is applied directly at the route level, keeping authorization logic centralized and separate from controller code:
-
-```php
-Route::middleware('auth')->group(function () {
-    Route::get('/articles/create', [PublicController::class, 'create'])->name('articles.create');
-    Route::post('/articles', [PublicController::class, 'store'])->name('articles.store');
-    Route::get('/articles/{article}/edit', [PublicController::class, 'edit'])->name('articles.edit');
-    Route::put('/articles/{article}', [PublicController::class, 'update'])->name('articles.update');
-    Route::delete('/articles/{article}', [PublicController::class, 'destroy'])->name('articles.destroy');
-});
-```
 
 ---
 
